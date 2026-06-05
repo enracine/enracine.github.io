@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* ── Enracine — Exaggerated Minimalism ────────────────────────────────────
+   Gallery-neutral chrome so the extracted colors are the only color on screen. */
+@theme inline {
+  --color-paper: #fafafa;
+  --color-card: #ffffff;
+  --color-ink: #09090b;
+  --color-ink-soft: #52525b;
+  --color-ink-faint: #a1a1aa;
+  --color-line: #e4e4e7;
+  --color-line-strong: #d4d4d8;
+  --color-accent: #18181b;
+  --color-ok: #16a34a;
+  --color-warn: #d97706;
+
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Reserve the scrollbar gutter permanently so locking page scroll (when the
+     Poem dialog opens) doesn't change content width — prevents background jitter. */
+  scrollbar-gutter: stable;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Tabular figures for any numeric metric readouts. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-rise {
+  animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
